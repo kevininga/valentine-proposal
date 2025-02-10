@@ -10,7 +10,8 @@ export default function App() {
   const [showYesMessage, setShowYesMessage] = useState(false);
   const [noMessage, setNoMessage] = useState("");
 
-  const images = [
+  // List of images to preload
+  const imageList = [
     "/top-image1.png",
     "/top-image2.jpg",
     "/bottom-image1.jpg",
@@ -20,12 +21,17 @@ export default function App() {
     "/judy2.jpg",
   ];
 
+  // Preload images
   useEffect(() => {
-    images.forEach((src) => {
-      const img = new Image();
-      img.src = src;
-    });
-  }, []);
+    const preloadImages = (images) => {
+      images.forEach((src) => {
+        const img = new Image();
+        img.src = src;
+      });
+    };
+
+    preloadImages(imageList);
+  }, [imageList]);
 
   const handleClick = () => {
     setIsFadingOut(true);
