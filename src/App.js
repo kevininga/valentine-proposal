@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./styles.css";
 
 export default function App() {
@@ -9,6 +9,23 @@ export default function App() {
   const [showFinalMessage, setShowFinalMessage] = useState(false);
   const [showYesMessage, setShowYesMessage] = useState(false);
   const [noMessage, setNoMessage] = useState("");
+
+  const images = [
+    "/top-image1.png",
+    "/top-image2.jpg",
+    "/bottom-image1.jpg",
+    "/judy1.jpg",
+    "/ourphoto1.jpg",
+    "/ourphoto2.jpg",
+    "/judy2.jpg",
+  ];
+
+  useEffect(() => {
+    images.forEach((src) => {
+      const img = new Image();
+      img.src = src;
+    });
+  }, []);
 
   const handleClick = () => {
     setIsFadingOut(true);
@@ -130,7 +147,7 @@ export default function App() {
         </div>
       ) : showYesMessage ? (
         <div className="yes-container">
-          <p className="yes-text">YAY! I LOVE YOU SO MUCH! ❤️💕</p>
+          <p className="yes-text">YAY! I LOVE YOU SO MUCH!</p>
           <div className="hearts-container">
             <span className="heart">❤️</span>
             <span className="heart">💖</span>
